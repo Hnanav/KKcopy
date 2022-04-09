@@ -1,0 +1,141 @@
+# depslib dependency file v1.0
+1649036000 source:d:\vippro\baseobj.cpp
+	"BaseObj.h"
+
+1649036000 d:\vippro\baseobj.h
+	"CommonFunction.h"
+
+1649036000 d:\vippro\commonfunction.h
+	<Windows.h>
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1649036000 source:d:\vippro\commonfunction.cpp
+	"CommonFunction.h"
+
+1649175377 source:d:\vippro\gamemap.cpp
+	"gamemap.h"
+
+1649036000 d:\vippro\gamemap.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1649036000 source:d:\vippro\imptimer.cpp
+	"ImpTimer.h"
+	"CommonFunction.h"
+
+1649263982 d:\vippro\imptimer.h
+
+1649472056 source:d:\vippro\main.cpp
+	"CommonFunction.h"
+	"BaseObj.h"
+	<iostream>
+	"gamemap.h"
+	"Player1.h"
+	"ImpTimer.h"
+	"Text.h"
+	"Menu.h"
+	"Mushroom.h"
+	<iostream>
+
+1649522483 d:\vippro\player1.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1649036000 d:\vippro\text.h
+	"CommonFunction.h"
+
+1649036000 d:\vippro\menu.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1649036000 source:d:\vippro\menu.cpp
+	"Menu.h"
+	"Text.h"
+	<iostream>
+
+1649470381 source:d:\vippro\player1.cpp
+	"Player1.h"
+	"Mushroom.h"
+
+1649036000 source:d:\vippro\text.cpp
+	"Text.h"
+
+1649518934 source:d:\vippro\mushroom.cpp
+	"Mushroom.h"
+
+1649522483 d:\vippro\mushroom.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1649036000 source:d:\kkcopy\baseobj.cpp
+	"BaseObj.h"
+
+1649036000 d:\kkcopy\baseobj.h
+	"CommonFunction.h"
+
+1649036000 d:\kkcopy\commonfunction.h
+	<Windows.h>
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1649036000 source:d:\kkcopy\commonfunction.cpp
+	"CommonFunction.h"
+
+1649175377 source:d:\kkcopy\gamemap.cpp
+	"gamemap.h"
+
+1649036000 d:\kkcopy\gamemap.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1649036000 source:d:\kkcopy\imptimer.cpp
+	"ImpTimer.h"
+	"CommonFunction.h"
+
+1649263982 d:\kkcopy\imptimer.h
+
+1649472056 source:d:\kkcopy\main.cpp
+	"CommonFunction.h"
+	"BaseObj.h"
+	<iostream>
+	"gamemap.h"
+	"Player1.h"
+	"ImpTimer.h"
+	"Text.h"
+	"Menu.h"
+	"Mushroom.h"
+	<iostream>
+
+1649522483 d:\kkcopy\player1.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1649036000 d:\kkcopy\text.h
+	"CommonFunction.h"
+
+1649036000 d:\kkcopy\menu.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1649522483 d:\kkcopy\mushroom.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1649036000 source:d:\kkcopy\menu.cpp
+	"Menu.h"
+	"Text.h"
+	<iostream>
+
+1649518934 source:d:\kkcopy\mushroom.cpp
+	"Mushroom.h"
+
+1649036000 source:d:\kkcopy\text.cpp
+	"Text.h"
+
