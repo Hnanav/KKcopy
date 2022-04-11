@@ -113,7 +113,7 @@
 	"Mushroom.h"
 	<iostream>
 
-1649522483 d:\kkcopy\player1.h
+1649611817 d:\kkcopy\player1.h
 	"CommonFunction.h"
 	"BaseObj.h"
 
@@ -133,9 +133,13 @@
 	"Text.h"
 	<iostream>
 
-1649518934 source:d:\kkcopy\mushroom.cpp
+1649686134 source:d:\kkcopy\mushroom.cpp
 	"Mushroom.h"
 
 1649036000 source:d:\kkcopy\text.cpp
 	"Text.h"
+
+1649686170 source:d:\kkcopy\player1.cpp
+	"Player1.h"
+	"Mushroom.h"
 

@@ -3,7 +3,7 @@
 
 Mushroom::Mushroom() {
 	frame = 0;
-	xpos = 730;
+	xpos = 900;
 	ypos = 640;
 	xval = 0;
 	yval = 0;

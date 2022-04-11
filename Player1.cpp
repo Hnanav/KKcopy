@@ -197,7 +197,7 @@ void Player1::DoPlayer(Map& mapdata) {
 	}
 
 	CheckToMap(mapdata);
-	CheckToMus();
+	CheckToMus(mapdata);
 }
 void Player1::CheckToMap(Map& mapdata) {
 	int x1 = 0;
@@ -348,31 +348,97 @@ void Player1::UpdateImgPlayer(SDL_Renderer* des) {
 
 }
 
-void Player1::CheckToMus() {
+void Player1::CheckToMus(Map& mapdata) {
 	int x1 = 0;
 	int x2 = 0;
 
 	int y1 = 0;
 	int y2 = 0;
 
+
+	//check horizontal
 	int height_min = (heightframe * 3 < TILE_SIZE ? heightframe * 3 : TILE_SIZE);
 
-	x1 = (xpos+xval+10)/TILE_SIZE;
-	x2 = (xpos + xval + widthframe*3 -10)/ TILE_SIZE;
+	x1 = (xpos+xval+10);  //ra duoc o thu bao nhieu
+	x2 = (xpos + xval + widthframe*3 -10);
 
-	y1 = (ypos+20) / TILE_SIZE;
-	y2 = (ypos + height_min +20) / TILE_SIZE;
+	y1 = (ypos+20) ;
+	y2 = (ypos + height_min +20) ;
 
-    bool checkcollision = false;
-    int mx1 = 730, my1 = 640;
-    int mx2 = 730+48, my2 = 640-48;
-    if(x2>=mx1 && x2 <= mx2 ) checkcollision=true;
-    if(y2<=my1 && y2>= my2) checkcollision = true;
-    if(checkcollision)
-    {
-        ypos = y2 * TILE_SIZE;
-        ypos -= heightframe * 3 - 17;
-        yval = -100;
-    }}
+	bool checkcollision = false;
+    int mus_x1 = 750, mus_y1 = 640;
+    int mus_x2 = (750+48), mus_y2 = (640+48);
 
 
+	if (x1 >= 0 && x2 < MAP_MAP_X && y1 >= 0 && y2 < MAP_MAP_Y) {
+		if (xval > 0) {   //mai object is moving to right
+
+			if (x2>= 750-10 && x2 <= 750+10) {
+				checkcollision = true;
+			}
+
+				if (checkcollision) {
+					//tren mat dat
+					xpos = (x2)*TILE_SIZE;  //ra vi tri bien cua nhan vat
+					xpos -= widthframe * 3 - 10;   //va cham voi chuong ngai vat
+					xval = 0;
+				}
+			}
+		}
+		else if (xval < 0) {
+
+			if ( x1 <= mus_x2+10 && x1>= mus_x1-10) {
+				checkcollision = true;
+			}
+			if(checkcollision) {
+					xpos = (x2)*TILE_SIZE;  //ra vi tri bien cua nhan vat
+					xpos -= widthframe * 3 - 10;   //va cham voi chuong ngai vat
+					xval = 0;
+				}
+		}
+//	check vertical
+	int width_min = widthframe*3< TILE_SIZE ? widthframe*3 : TILE_SIZE;
+	x1 = (xpos+25);
+	x2 = (xpos + width_min+40) ;
+
+	y1 = (ypos + yval) ;
+	y2 = (ypos + yval + heightframe*3 -17) ;
+
+	if (x1 >= 0 && x2 < MAP_MAP_X && y1 >= 0 && y2 < MAP_MAP_Y) {
+		if (yval > 0) {
+			if ( y2 >= mus_y1-10 && y2>= mus_y1+10) {
+				checkcollision = true;
+			}
+            if (checkcollision) {
+					ypos = y2 * TILE_SIZE;
+					ypos -= heightframe * 3 - 17;
+					yval = 0;
+
+				}
+
+		}
+		else if (yval < 0) {
+
+			if (y1 <= mus_y2+10 && y1>= mus_y1-10) {
+				checkcollision = true;
+			}
+			if (checkcollision) {
+					ypos = y2 * TILE_SIZE;
+					ypos -= heightframe * 3 - 17;
+					yval = 0;
+
+				}
+	}
+	xpos += xval;
+	ypos += yval;
+	if (xpos < 0) {
+		xpos = 0;
+	}
+	else if ((xpos + widthframe*3) > mapdata.maxx) {
+		xpos = mapdata.maxx - widthframe*3 -1;
+	}
+	if (ypos < 0) {
+		ypos = 0;
+	}
+
+}}

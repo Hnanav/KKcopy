@@ -36,7 +36,7 @@ public:
 
 	void IncreasePowerPlayer1();
 
-	void CheckToMus();
+	void CheckToMus(Map& mapdata);
 
 
 private:
