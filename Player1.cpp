@@ -351,37 +351,36 @@ void Player1::UpdateImgPlayer(SDL_Renderer* des) {
 void Player1::CheckToMus(Map& mapdata) {
 	int x1 = 0;
 	int x2 = 0;
-
 	int y1 = 0;
-	int y2 = 0;
+	int y2 = 0;  //toa do khi di chuyen cua con meo
 
 
 	//check horizontal
-	int height_min = (heightframe * 3 < TILE_SIZE ? heightframe * 3 : TILE_SIZE);
+	int height_min = (heightframe * 3 < TILE_SIZE ? heightframe * 3 : TILE_SIZE);  // chieu cao nho nhat cua con meo
 
-	x1 = (xpos+xval+10);  //ra duoc o thu bao nhieu
-	x2 = (xpos + xval + widthframe*3 -10);
+	x1 = (xpos+xval+10);  // vi tri hien tai cua con meo toa do x1
+	x2 = (xpos + xval + widthframe*3 -10);  // vi tri hien tai cua con meo toa do x2
 
-	y1 = (ypos+20) ;
-	y2 = (ypos + height_min +20) ;
+	y1 = (ypos+20) ;  //vi tri hien tai cua con meo toa do y1
+	y2 = (ypos + height_min +20) ;  //vi tri hien tai con meo toa do y2
 
-	bool checkcollision = false;
-    int mus_x1 = 750, mus_y1 = 640;
-    int mus_x2 = (750+48), mus_y2 = (640+48);
+	bool checkcollision = false;  // check xem con meo va con nam chua
+    int mus_x1 = 750, mus_y1 = 640;  // vi tri con nam (hien tai thi tao da dich con nam sang 1 ben, con cai vi tri nay la cho con meo bien mat)
+    int mus_x2 = (750+48), mus_y2 = (640+48); //vi tri con nam
 
-
-	if (x1 >= 0 && x2 < MAP_MAP_X && y1 >= 0 && y2 < MAP_MAP_Y) {
-		if (xval > 0) {   //mai object is moving to right
-
-			if (x2>= 750-10 && x2 <= 750+10) {
+// xet chieu di chuyen ngang
+	if (x1 >= 0 && x2 < MAP_MAP_X && y1 >= 0 && y2 < MAP_MAP_Y) { // neu con meo van o trong map
+		if (xval > 0) {   //con meo di chuyen sang phai
+			if (x2>= 750-10 && x2 <= 750+10) {  // cai nay la t kiem tra xem toa do cua 2 con co cham nhau khong, neu co thi xay ra va cham
+                                                // cai nay tao deo biet viet dung hay khong nua :(
 				checkcollision = true;
 			}
 
 				if (checkcollision) {
-					//tren mat dat
+
 					xpos = (x2)*TILE_SIZE;  //ra vi tri bien cua nhan vat
-					xpos -= widthframe * 3 - 10;   //va cham voi chuong ngai vat
-					xval = 0;
+					xpos -= widthframe * 3 - 10;   //va cham voi chuong ngai vat thi nay lai ve vi tri cung
+					xval = 0;  // gia tri tang them bang 0
 				}
 			}
 		}
@@ -396,7 +395,7 @@ void Player1::CheckToMus(Map& mapdata) {
 					xval = 0;
 				}
 		}
-//	check vertical
+//	xet chieu di chuyen doc
 	int width_min = widthframe*3< TILE_SIZE ? widthframe*3 : TILE_SIZE;
 	x1 = (xpos+25);
 	x2 = (xpos + width_min+40) ;
@@ -412,7 +411,7 @@ void Player1::CheckToMus(Map& mapdata) {
             if (checkcollision) {
 					ypos = y2 * TILE_SIZE;
 					ypos -= heightframe * 3 - 17;
-					yval = 0;
+					yval = 0;    // cai nay neu thay bang -3 chang han thi no se nay len 3, vi du the
 
 				}
 
@@ -430,8 +429,8 @@ void Player1::CheckToMus(Map& mapdata) {
 				}
 	}
 	xpos += xval;
-	ypos += yval;
-	if (xpos < 0) {
+	ypos += yval;  // vi tri hien tai cong luong tang them
+	if (xpos < 0) {  // de con meo no khong roi khoi man hinh
 		xpos = 0;
 	}
 	else if ((xpos + widthframe*3) > mapdata.maxx) {
