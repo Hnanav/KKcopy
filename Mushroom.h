@@ -13,6 +13,8 @@ public:
 	void show(SDL_Renderer* des);
 	void getNum(int _n);
 	void setclip();
+	void set_renderquad();
+	SDL_Rect get_rect();
 
 private:
 	float xval;
@@ -22,6 +24,7 @@ private:
 	int widthframe;
 	int heightframe;
 	SDL_Rect FRAME_CLIP[5];
+	SDL_Rect render_Quad;
 	int frame;
 	int n ;
 

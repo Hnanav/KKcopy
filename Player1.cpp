@@ -1,8 +1,12 @@
 #include "Player1.h"
 #include "Mushroom.h"
 
-Mushroom mushmush;
-
+void Player1:: check_haha(){
+    haha.x = 900;
+    haha.y = 640;
+    haha.w = 48;
+    haha.h = 48;
+}
 Player1::Player1() {
 	frame = 0;
 	xpos = 332;
@@ -96,7 +100,7 @@ void Player1::show(SDL_Renderer* des) {
 	rect.y = ypos;
 
 	SDL_Rect* currentclip = &FRAME_CLIP[frame/6];
-	SDL_Rect renderQuad = {rect.x,rect.y,widthframe*3,heightframe*3 };
+    renderQuad = {rect.x,rect.y,widthframe*3,heightframe*3 };
 
 	if (currentclip != NULL)
 	{
@@ -193,11 +197,11 @@ void Player1::DoPlayer(Map& mapdata) {
 			yval -= JUMP_VAL;
 		}
 		onground = false;
+
 		input_type.jump = 0;
 	}
 
 	CheckToMap(mapdata);
-	CheckToMus(mapdata);
 }
 void Player1::CheckToMap(Map& mapdata) {
 	int x1 = 0;
@@ -210,14 +214,14 @@ void Player1::CheckToMap(Map& mapdata) {
 	//check horizontal
 	int height_min = (heightframe * 3 < TILE_SIZE ? heightframe * 3 : TILE_SIZE);
 
-	x1 = (xpos+xval+10)/TILE_SIZE;  //ra duoc o thu bao nhieu
+	x1 = (xpos+xval+10)/TILE_SIZE;
 	x2 = (xpos + xval + widthframe*3 -10)/ TILE_SIZE;
 
 	y1 = (ypos+20) / TILE_SIZE;
 	y2 = (ypos + height_min +20) / TILE_SIZE;
 
 	if (x1 >= 0 && x2 < MAP_MAP_X && y1 >= 0 && y2 < MAP_MAP_Y) {
-		if (xval > 0) {   //mai object is moving to right
+		if (xval > 0) {
 
 			if (mapdata.tile[y1][x2] == PINK_FISH) {
 				mapdata.tile[y1][x2] = 0;
@@ -230,9 +234,8 @@ void Player1::CheckToMap(Map& mapdata) {
 
 			else {
 				if ((mapdata.tile[y1][x2] != BLANK_TILE&&onground || mapdata.tile[y2][x2] != BLANK_TILE&&onground)) {
-					//tren mat dat
-					xpos = (x2)*TILE_SIZE;  //ra vi tri bien cua nhan vat
-					xpos -= widthframe * 3 - 10;   //va cham voi chuong ngai vat
+					xpos = (x2)*TILE_SIZE;
+					xpos -= widthframe * 3 - 10;
 					xval = 0;
 				}
 			}
@@ -320,8 +323,6 @@ void Player1::CheckToMap(Map& mapdata) {
 void Player1::IncreasePowerPlayer1() {
 	pinkfishcount++;
 }
-
-
 void Player1::UpdateImgPlayer(SDL_Renderer* des) {
 	if (onground) {
 		if (status == WALK_LEFT) {
@@ -348,96 +349,163 @@ void Player1::UpdateImgPlayer(SDL_Renderer* des) {
 
 }
 
+
 void Player1::CheckToMus(Map& mapdata) {
 	int x1 = 0;
 	int x2 = 0;
+
 	int y1 = 0;
-	int y2 = 0;  //toa do khi di chuyen cua con meo
+	int y2 = 0;
 
-
+    bool checkCollision = false;
+    int leftB = 900;
+    int rightB = 900 + 48;
+    int topB = 640;
+    int bottomB = 640 + 48;
 	//check horizontal
-	int height_min = (heightframe * 3 < TILE_SIZE ? heightframe * 3 : TILE_SIZE);  // chieu cao nho nhat cua con meo
+	int height_min = (heightframe * 3 < TILE_SIZE ? heightframe * 3 : TILE_SIZE);
 
-	x1 = (xpos+xval+10);  // vi tri hien tai cua con meo toa do x1
-	x2 = (xpos + xval + widthframe*3 -10);  // vi tri hien tai cua con meo toa do x2
+	x1 = (xpos+xval+10)/TILE_SIZE;  //ra duoc o thu bao nhieu
+	x2 = (xpos + xval + widthframe*3 -10)/ TILE_SIZE;
 
-	y1 = (ypos+20) ;  //vi tri hien tai cua con meo toa do y1
-	y2 = (ypos + height_min +20) ;  //vi tri hien tai con meo toa do y2
+	y1 = (ypos+20) / TILE_SIZE;
+	y2 = (ypos + height_min +20) / TILE_SIZE;
 
-	bool checkcollision = false;  // check xem con meo va con nam chua
-    int mus_x1 = 750, mus_y1 = 640;  // vi tri con nam (hien tai thi tao da dich con nam sang 1 ben, con cai vi tri nay la cho con meo bien mat)
-    int mus_x2 = (750+48), mus_y2 = (640+48); //vi tri con nam
+	if (x1 >= 0 && x2 < MAP_MAP_X && y1 >= 0 && y2 < MAP_MAP_Y) {
+		if (xval > 0) {   //mai object is moving to right
+                if( y1 <= topB )
+                {
+                checkCollision = false;
+                }
 
-// xet chieu di chuyen ngang
-	if (x1 >= 0 && x2 < MAP_MAP_X && y1 >= 0 && y2 < MAP_MAP_Y) { // neu con meo van o trong map
-		if (xval > 0) {   //con meo di chuyen sang phai
-			if (x2>= 750-10 && x2 <= 750+10) {  // cai nay la t kiem tra xem toa do cua 2 con co cham nhau khong, neu co thi xay ra va cham
-                                                // cai nay tao deo biet viet dung hay khong nua :(
-				checkcollision = true;
-			}
+                else if( y2 >= bottomB )
+                {
+                checkCollision= false;
+                }
 
-				if (checkcollision) {
+                else if( x1 <= leftB )
+                {
+                checkCollision= false;
+                    }
 
-					xpos = (x2)*TILE_SIZE;  //ra vi tri bien cua nhan vat
-					xpos -= widthframe * 3 - 10;   //va cham voi chuong ngai vat thi nay lai ve vi tri cung
-					xval = 0;  // gia tri tang them bang 0
-				}
-			}
-		}
-		else if (xval < 0) {
+                else if( x2 >= rightB )
+                {
+                checkCollision= false;
+                }
+                else checkCollision =true;
 
-			if ( x1 <= mus_x2+10 && x1>= mus_x1-10) {
-				checkcollision = true;
-			}
-			if(checkcollision) {
+    //If none of the sides from A are outside B\
+    true;
+				if (checkCollision) {
+					//tren mat dat
 					xpos = (x2)*TILE_SIZE;  //ra vi tri bien cua nhan vat
 					xpos -= widthframe * 3 - 10;   //va cham voi chuong ngai vat
 					xval = 0;
 				}
+			}
 		}
-//	xet chieu di chuyen doc
-	int width_min = widthframe*3< TILE_SIZE ? widthframe*3 : TILE_SIZE;
-	x1 = (xpos+25);
-	x2 = (xpos + width_min+40) ;
+		else if (xval < 0) {
+           if( y1 <= topB )
+                {
+                checkCollision = false;
+                }
 
-	y1 = (ypos + yval) ;
-	y2 = (ypos + yval + heightframe*3 -17) ;
+                else if( y2 >= bottomB )
+                {
+                checkCollision= false;
+                }
+
+                else if( x1 <= leftB )
+                {
+                checkCollision= false;
+                    }
+
+                else if( x2 >= rightB )
+                {
+                checkCollision= false;
+                }
+                else checkCollision =true;
+
+           if (checkCollision) {
+					xpos = (x1)*TILE_SIZE + 20;
+					xval = 0;
+				}
+		}
+	//check vertical
+	int width_min = widthframe*3< TILE_SIZE ? widthframe*3 : TILE_SIZE;
+	x1 = (xpos+25) / TILE_SIZE;
+	x2 = (xpos + width_min+40) / TILE_SIZE;
+
+	y1 = (ypos + yval) / TILE_SIZE;
+	y2 = (ypos + yval + heightframe*3 -17) / TILE_SIZE;
 
 	if (x1 >= 0 && x2 < MAP_MAP_X && y1 >= 0 && y2 < MAP_MAP_Y) {
-		if (yval > 0) {
-			if ( y2 >= mus_y1-10 && y2>= mus_y1+10) {
-				checkcollision = true;
-			}
-            if (checkcollision) {
+            if( y1 <= topB )
+                {
+                checkCollision = false;
+                }
+
+                else if( y2 >= bottomB )
+                {
+                checkCollision= false;
+                }
+
+                else if( x1 <= leftB )
+                {
+                checkCollision= false;
+                    }
+
+                else if( x2 >= rightB )
+                {
+                checkCollision= false;
+                }
+                else checkCollision =true;
+        if (checkCollision) {
 					ypos = y2 * TILE_SIZE;
 					ypos -= heightframe * 3 - 17;
-					yval = 0;    // cai nay neu thay bang -3 chang han thi no se nay len 3, vi du the
-
-				}
-
+					yval = -5;
+			}
 		}
 		else if (yval < 0) {
 
-			if (y1 <= mus_y2+10 && y1>= mus_y1-10) {
-				checkcollision = true;
-			}
-			if (checkcollision) {
-					ypos = y2 * TILE_SIZE;
-					ypos -= heightframe * 3 - 17;
-					yval = 0;
+            if( y1 <= topB )
+                {
+                checkCollision = false;
+                }
 
-				}
-	}
+                else if( y2 >= bottomB )
+                {
+                checkCollision= false;
+                }
+
+                else if( x1 <= leftB )
+                {
+                checkCollision= false;
+                    }
+
+                else if( x2 >= rightB )
+                {
+                checkCollision= false;
+                }
+                else checkCollision =true;
+
+			if (checkCollision) {
+				ypos = (y1)*TILE_SIZE+10;
+				yval = -5;
+			}
+		}
+
 	xpos += xval;
-	ypos += yval;  // vi tri hien tai cong luong tang them
-	if (xpos < 0) {  // de con meo no khong roi khoi man hinh
+	ypos += yval;
+	if (xpos < 0) {
 		xpos = 0;
 	}
 	else if ((xpos + widthframe*3) > mapdata.maxx) {
 		xpos = mapdata.maxx - widthframe*3 -1;
 	}
+
 	if (ypos < 0) {
 		ypos = 0;
 	}
 
-}}
+}

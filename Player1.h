@@ -37,7 +37,8 @@ public:
 	void IncreasePowerPlayer1();
 
 	void CheckToMus(Map& mapdata);
-
+    bool checkCollision( SDL_Rect a, SDL_Rect b );
+    void check_haha();
 
 private:
 
@@ -53,6 +54,11 @@ private:
 	int heightframe;
 
 	SDL_Rect FRAME_CLIP[7];
+	SDL_Rect renderQuad;
+
+    SDL_Rect haha;
+
+
 
 
 	Input input_type;
