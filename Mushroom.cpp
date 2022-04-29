@@ -40,12 +40,15 @@ void Mushroom::setclip() {
 	}
 }
 
-/*void Mushroom::set_renderquad(){
-    render_Quad.x = xpos;
-	render_Quad.y = ypos;
-	render_Quad.w = widthframe*3;
-	render_Quad.h = heightframe*3;
-}  */
+int Mushroom::Get_MusPosx()
+{
+ return xpos;
+}
+
+int Mushroom::Get_MusPosy()
+{
+    return ypos;
+}
 void Mushroom::show(SDL_Renderer* des) {
 if (frame >= 0) {
 			++frame;
@@ -74,13 +77,5 @@ if (frame >= 0) {
 	SDL_RenderCopy(des, texture, currentclip, &renderQuad);
 }
 
-SDL_Rect get_rect(){
-    SDL_Rect haha;
-    haha.x = 900;
-	haha.y = 640;
-	haha.w = 48*3;
-	haha.h = 48*3;
-    return haha;
-}
 
 

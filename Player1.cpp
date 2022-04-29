@@ -1,12 +1,6 @@
 #include "Player1.h"
-#include "Mushroom.h"
+#include "OtherObj.h"
 
-void Player1:: check_haha(){
-    haha.x = 900;
-    haha.y = 640;
-    haha.w = 48;
-    haha.h = 48;
-}
 Player1::Player1() {
 	frame = 0;
 	xpos = 332;
@@ -100,7 +94,7 @@ void Player1::show(SDL_Renderer* des) {
 	rect.y = ypos;
 
 	SDL_Rect* currentclip = &FRAME_CLIP[frame/6];
-    renderQuad = {rect.x,rect.y,widthframe*3,heightframe*3 };
+	SDL_Rect renderQuad = {rect.x,rect.y,widthframe*3,heightframe*3 };
 
 	if (currentclip != NULL)
 	{
@@ -202,6 +196,9 @@ void Player1::DoPlayer(Map& mapdata) {
 	}
 
 	CheckToMap(mapdata);
+	CheckToMus(mapdata);
+	CheckToGate(mapdata);
+
 }
 void Player1::CheckToMap(Map& mapdata) {
 	int x1 = 0;
@@ -217,7 +214,7 @@ void Player1::CheckToMap(Map& mapdata) {
 	x1 = (xpos+xval+10)/TILE_SIZE;
 	x2 = (xpos + xval + widthframe*3 -10)/ TILE_SIZE;
 
-	y1 = (ypos+20) / TILE_SIZE;
+	y1 = (ypos+30) / TILE_SIZE;
 	y2 = (ypos + height_min +20) / TILE_SIZE;
 
 	if (x1 >= 0 && x2 < MAP_MAP_X && y1 >= 0 && y2 < MAP_MAP_Y) {
@@ -233,7 +230,7 @@ void Player1::CheckToMap(Map& mapdata) {
 			}
 
 			else {
-				if ((mapdata.tile[y1][x2] != BLANK_TILE&&onground || mapdata.tile[y2][x2] != BLANK_TILE&&onground)) {
+				if ((mapdata.tile[y1][x2] != BLANK_TILE || mapdata.tile[y2][x2] != BLANK_TILE)) {
 					xpos = (x2)*TILE_SIZE;
 					xpos -= widthframe * 3 - 10;
 					xval = 0;
@@ -251,7 +248,7 @@ void Player1::CheckToMap(Map& mapdata) {
 				IncreasePowerPlayer1();
 			}
 			else {
-				if (mapdata.tile[y1][x1] != BLANK_TILE &&onground || mapdata.tile[y2][x1] != BLANK_TILE&&onground) {
+				if (mapdata.tile[y1][x1] != BLANK_TILE || mapdata.tile[y2][x1] != BLANK_TILE) {
 					xpos = (x1)*TILE_SIZE + 20;
 					xval = 0;
 				}
@@ -351,6 +348,8 @@ void Player1::UpdateImgPlayer(SDL_Renderer* des) {
 
 
 void Player1::CheckToMus(Map& mapdata) {
+    OtherObj cutemus;
+    cutemus.getPos(1000,640);
 	int x1 = 0;
 	int x2 = 0;
 
@@ -358,140 +357,75 @@ void Player1::CheckToMus(Map& mapdata) {
 	int y2 = 0;
 
     bool checkCollision = false;
-    int leftB = 900;
-    int rightB = 900 + 48;
-    int topB = 640;
-    int bottomB = 640 + 48;
-	//check horizontal
+    int x1B = cutemus.Get_ObjPosx();
+    int x2B = cutemus.Get_ObjPosx() + 48*3;
+    int y1B = cutemus.Get_ObjPosy();
+    int y2B = cutemus.Get_ObjPosy() + 48*3;
+    //check horizontal
 	int height_min = (heightframe * 3 < TILE_SIZE ? heightframe * 3 : TILE_SIZE);
 
-	x1 = (xpos+xval+10)/TILE_SIZE;  //ra duoc o thu bao nhieu
-	x2 = (xpos + xval + widthframe*3 -10)/ TILE_SIZE;
+	x1 = (xpos+xval+30);
+	x2 = (xpos + xval + widthframe*3 -30);
 
-	y1 = (ypos+20) / TILE_SIZE;
-	y2 = (ypos + height_min +20) / TILE_SIZE;
+	y1 = (ypos+20) ;
+	y2 = (ypos + height_min +20) ;
 
-	if (x1 >= 0 && x2 < MAP_MAP_X && y1 >= 0 && y2 < MAP_MAP_Y) {
-		if (xval > 0) {   //mai object is moving to right
-                if( y1 <= topB )
-                {
-                checkCollision = false;
+	if (x1/TILE_SIZE >= 0 && x2/TILE_SIZE < MAP_MAP_X && y1/TILE_SIZE >= 0 && y2/TILE_SIZE < MAP_MAP_Y) {
+             if(x2>=x1B&&y2>=y1B&&x2<=x2B&&y2<=y2B||
+                x1>=x1B&&y1>=y1B&&x1<=x2B&&y1<=y2B||
+                x2>=x1B&&y1>=y1B&&x2<=x2B&&y1<=y2B||
+                x1>=x1B&&y2>=y1B&&x1<=x2B&&y2<=y2B
+                ){
+                    checkCollision=true;
                 }
-
-                else if( y2 >= bottomB )
-                {
-                checkCollision= false;
-                }
-
-                else if( x1 <= leftB )
-                {
-                checkCollision= false;
-                    }
-
-                else if( x2 >= rightB )
-                {
-                checkCollision= false;
-                }
-                else checkCollision =true;
-
     //If none of the sides from A are outside B\
     true;
 				if (checkCollision) {
-					//tren mat dat
-					xpos = (x2)*TILE_SIZE;  //ra vi tri bien cua nhan vat
-					xpos -= widthframe * 3 - 10;   //va cham voi chuong ngai vat
-					xval = 0;
-				}
-			}
-		}
-		else if (xval < 0) {
-           if( y1 <= topB )
-                {
-                checkCollision = false;
-                }
-
-                else if( y2 >= bottomB )
-                {
-                checkCollision= false;
-                }
-
-                else if( x1 <= leftB )
-                {
-                checkCollision= false;
-                    }
-
-                else if( x2 >= rightB )
-                {
-                checkCollision= false;
-                }
-                else checkCollision =true;
-
-           if (checkCollision) {
-					xpos = (x1)*TILE_SIZE + 20;
-					xval = 0;
+					if(xval>0){
+                        xpos = x2+82;
+                        xpos -= widthframe * 3+56 ;
+                        xval = 0;
+					}
+					else if(xval<0){
+                        xpos = x1-26;
+                        xval = 0;
+					}
 				}
 		}
 	//check vertical
 	int width_min = widthframe*3< TILE_SIZE ? widthframe*3 : TILE_SIZE;
-	x1 = (xpos+25) / TILE_SIZE;
-	x2 = (xpos + width_min+40) / TILE_SIZE;
+	x1 = (xpos+60) ;
+	x2 = (xpos + width_min-40) ;
 
-	y1 = (ypos + yval) / TILE_SIZE;
-	y2 = (ypos + yval + heightframe*3 -17) / TILE_SIZE;
+	y1 = (ypos + yval) ;
+	y2 = (ypos + yval + heightframe*3 -40) ;
 
-	if (x1 >= 0 && x2 < MAP_MAP_X && y1 >= 0 && y2 < MAP_MAP_Y) {
-            if( y1 <= topB )
-                {
-                checkCollision = false;
+	if (x1/TILE_SIZE >= 0 && x2/TILE_SIZE < MAP_MAP_X && y1/TILE_SIZE >= 0 && y2/TILE_SIZE < MAP_MAP_Y) {
+            if(x2>=x1B&&y2>=y1B&&x2<=x2B&&y2<=y2B){
+                    checkCollision=true;
                 }
-
-                else if( y2 >= bottomB )
-                {
-                checkCollision= false;
+                else if(x1>=x1B&&y1>=y1B&&x1<=x2B&&y1<=y2B){
+                    checkCollision=true;
                 }
-
-                else if( x1 <= leftB )
-                {
-                checkCollision= false;
-                    }
-
-                else if( x2 >= rightB )
-                {
-                checkCollision= false;
+                else if(x2>=x1B&&y1>=y1B&&x2<=x2B&&y1<=y2B){
+                    checkCollision=true;
                 }
-                else checkCollision =true;
+                else if(x1>=x1B&&y2>=y1B&&x1<=x2B&&y2<=y2B){
+                    checkCollision=true;
+                }
+                else checkCollision=false;
+        if(yval>0){
         if (checkCollision) {
-					ypos = y2 * TILE_SIZE;
+					ypos = y2;
 					ypos -= heightframe * 3 - 17;
 					yval = -5;
 			}
 		}
 		else if (yval < 0) {
 
-            if( y1 <= topB )
-                {
-                checkCollision = false;
-                }
-
-                else if( y2 >= bottomB )
-                {
-                checkCollision= false;
-                }
-
-                else if( x1 <= leftB )
-                {
-                checkCollision= false;
-                    }
-
-                else if( x2 >= rightB )
-                {
-                checkCollision= false;
-                }
-                else checkCollision =true;
-
 			if (checkCollision) {
-				ypos = (y1)*TILE_SIZE+10;
-				yval = -5;
+				ypos = y1+10;
+				yval = 0;
 			}
 		}
 
@@ -506,6 +440,90 @@ void Player1::CheckToMus(Map& mapdata) {
 
 	if (ypos < 0) {
 		ypos = 0;
+        }
 	}
-
 }
+
+
+void Player1::CheckToGate(Map& mapdata)
+{
+    OtherObj gatelv1;
+    gatelv1.getPos(480,550);
+
+	int x1 = 0;
+	int x2 = 0;
+
+	int y1 = 0;
+	int y2 = 0;
+
+    bool checkCollision = false;
+    int x1B = gatelv1.Get_ObjPosx();
+    int x2B = gatelv1.Get_ObjPosx() + 32*3;
+    int y1B = gatelv1.Get_ObjPosy();
+    int y2B = gatelv1.Get_ObjPosy() + 32*3;
+    //check horizontal
+	int height_min = (heightframe * 3 < TILE_SIZE ? heightframe * 3 : TILE_SIZE);
+
+	x1 = (xpos+xval+30);
+	x2 = (xpos + xval + widthframe*3 -30);
+
+	y1 = (ypos+20) ;
+	y2 = (ypos + height_min +20) ;
+
+	if (x1/TILE_SIZE >= 0 && x2/TILE_SIZE < MAP_MAP_X && y1/TILE_SIZE >= 0 && y2/TILE_SIZE < MAP_MAP_Y) {
+             if(x2>=x1B&&y2>=y1B&&x2<=x2B&&y2<=y2B||
+                x1>=x1B&&y1>=y1B&&x1<=x2B&&y1<=y2B||
+                x2>=x1B&&y1>=y1B&&x2<=x2B&&y1<=y2B||
+                x1>=x1B&&y2>=y1B&&x1<=x2B&&y2<=y2B
+                ){
+                    checkCollision=true;
+                }
+    //If none of the sides from A are outside B\
+    true;
+				if (checkCollision) {
+					xpos = 0;
+					xval =0;
+					ypos =0;
+					yval =0;
+				}
+		}
+	//check vertical
+	int width_min = widthframe*3< TILE_SIZE ? widthframe*3 : TILE_SIZE;
+	x1 = (xpos+60) ;
+	x2 = (xpos + width_min-40) ;
+
+	y1 = (ypos + yval) ;
+	y2 = (ypos + yval + heightframe*3 -40) ;
+
+	if (x1/TILE_SIZE >= 0 && x2/TILE_SIZE < MAP_MAP_X && y1/TILE_SIZE >= 0 && y2/TILE_SIZE < MAP_MAP_Y) {
+            if(x2>=x1B&&y2>=y1B&&x2<=x2B&&y2<=y2B){
+                    checkCollision=true;
+                }
+                else if(x1>=x1B&&y1>=y1B&&x1<=x2B&&y1<=y2B){
+                    checkCollision=true;
+                }
+                else if(x2>=x1B&&y1>=y1B&&x2<=x2B&&y1<=y2B){
+                    checkCollision=true;
+                }
+                else if(x1>=x1B&&y2>=y1B&&x1<=x2B&&y2<=y2B){
+                    checkCollision=true;
+                }
+                else checkCollision=false;
+        if(yval>0){
+        if (checkCollision) {
+					xpos = 0;
+					xval =0;
+					ypos =0;
+					yval =0;
+			}
+		}
+		else if (yval < 0) {
+
+			if (checkCollision) {
+				xpos = 0;
+                xval =0;
+                ypos =0;
+                yval =0;
+			}
+		}
+}}

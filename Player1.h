@@ -1,7 +1,7 @@
 #pragma once
 #include "CommonFunction.h"
 #include "BaseObj.h"
-
+#include "OtherObj.h"
 #define GRAVITY_SPEED 0.3
 #define MAX_FALL_SPEED 10
 #define PLAYER_SPEED 2
@@ -37,8 +37,8 @@ public:
 	void IncreasePowerPlayer1();
 
 	void CheckToMus(Map& mapdata);
-    bool checkCollision( SDL_Rect a, SDL_Rect b );
-    void check_haha();
+
+	void CheckToGate(Map& mapdata);
 
 private:
 
@@ -56,8 +56,6 @@ private:
 	SDL_Rect FRAME_CLIP[7];
 	SDL_Rect renderQuad;
 
-    SDL_Rect haha;
-
 
 
 
@@ -67,4 +65,3 @@ private:
 	bool onground=false;
 
 };
-

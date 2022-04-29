@@ -88,7 +88,7 @@
 1649036000 source:d:\kkcopy\commonfunction.cpp
 	"CommonFunction.h"
 
-1649175377 source:d:\kkcopy\gamemap.cpp
+1650643857 source:d:\kkcopy\gamemap.cpp
 	"gamemap.h"
 
 1649036000 d:\kkcopy\gamemap.h
@@ -101,45 +101,142 @@
 
 1649263982 d:\kkcopy\imptimer.h
 
-1649472056 source:d:\kkcopy\main.cpp
+1650895666 source:d:\kkcopy\main.cpp
 	"CommonFunction.h"
 	"BaseObj.h"
 	<iostream>
 	"gamemap.h"
 	"Player1.h"
+	"Player2.h"
 	"ImpTimer.h"
 	"Text.h"
 	"Menu.h"
-	"Mushroom.h"
+	"OtherObj.h"
 	<iostream>
 
-1649777919 d:\kkcopy\player1.h
+1650894493 d:\kkcopy\player1.h
 	"CommonFunction.h"
 	"BaseObj.h"
+	"OtherObj.h"
 
 1649036000 d:\kkcopy\text.h
 	"CommonFunction.h"
 
-1649036000 d:\kkcopy\menu.h
+1650895390 d:\kkcopy\menu.h
 	"CommonFunction.h"
 	"BaseObj.h"
 
-1649776954 d:\kkcopy\mushroom.h
+1650648230 d:\kkcopy\mushroom.h
 	"CommonFunction.h"
 	"BaseObj.h"
 
-1649036000 source:d:\kkcopy\menu.cpp
+1650895351 source:d:\kkcopy\menu.cpp
 	"Menu.h"
 	"Text.h"
 	<iostream>
 
-1649777146 source:d:\kkcopy\mushroom.cpp
+1650775333 source:d:\kkcopy\mushroom.cpp
 	"Mushroom.h"
 
 1649036000 source:d:\kkcopy\text.cpp
 	"Text.h"
 
-1649778019 source:d:\kkcopy\player1.cpp
+1650894267 source:d:\kkcopy\player1.cpp
 	"Player1.h"
-	"Mushroom.h"
+	"OtherObj.h"
+
+1650855702 source:d:\kkcopy\player2.cpp
+	"Player2.h"
+
+1650125783 d:\kkcopy\player2.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1650894879 source:d:\kkcopy\otherobj.cpp
+	"OtherObj.h"
+
+1650894879 d:\kkcopy\otherobj.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1649036000 source:d:\project_test\kkcopy\baseobj.cpp
+	"BaseObj.h"
+
+1649036000 d:\project_test\kkcopy\baseobj.h
+	"CommonFunction.h"
+
+1649036000 d:\project_test\kkcopy\commonfunction.h
+	<Windows.h>
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1649036000 source:d:\project_test\kkcopy\commonfunction.cpp
+	"CommonFunction.h"
+
+1650643857 source:d:\project_test\kkcopy\gamemap.cpp
+	"gamemap.h"
+
+1649036000 d:\project_test\kkcopy\gamemap.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1649036000 source:d:\project_test\kkcopy\imptimer.cpp
+	"ImpTimer.h"
+	"CommonFunction.h"
+
+1649263982 d:\project_test\kkcopy\imptimer.h
+
+1650895666 source:d:\project_test\kkcopy\main.cpp
+	"CommonFunction.h"
+	"BaseObj.h"
+	<iostream>
+	"gamemap.h"
+	"Player1.h"
+	"Player2.h"
+	"ImpTimer.h"
+	"Text.h"
+	"Menu.h"
+	"OtherObj.h"
+	<iostream>
+
+1650894493 d:\project_test\kkcopy\player1.h
+	"CommonFunction.h"
+	"BaseObj.h"
+	"OtherObj.h"
+
+1650894879 d:\project_test\kkcopy\otherobj.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1650125783 d:\project_test\kkcopy\player2.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1649036000 d:\project_test\kkcopy\text.h
+	"CommonFunction.h"
+
+1650895390 d:\project_test\kkcopy\menu.h
+	"CommonFunction.h"
+	"BaseObj.h"
+
+1650895351 source:d:\project_test\kkcopy\menu.cpp
+	"Menu.h"
+	"Text.h"
+	<iostream>
+
+1650894879 source:d:\project_test\kkcopy\otherobj.cpp
+	"OtherObj.h"
+
+1650894267 source:d:\project_test\kkcopy\player1.cpp
+	"Player1.h"
+	"OtherObj.h"
+
+1650855702 source:d:\project_test\kkcopy\player2.cpp
+	"Player2.h"
+
+1649036000 source:d:\project_test\kkcopy\text.cpp
+	"Text.h"
 

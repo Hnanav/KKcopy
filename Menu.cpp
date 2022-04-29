@@ -32,8 +32,8 @@ void ChangeColor(const int& index, const int& color, SDL_Renderer* renderer, TTF
 }
 
 int Menu::loadMenu(SDL_Renderer* renderer, TTF_Font* font) {
-	
-	
+
+
 
 	BuildItemMenu(0, "Play Game", 700, 600, Text::PINK, renderer, font);
 
@@ -41,7 +41,7 @@ int Menu::loadMenu(SDL_Renderer* renderer, TTF_Font* font) {
 	int ym = 0;
 
 	SDL_Event mevent;
-	
+
 	while (true) {
 		LoadImg("assets/background1.png", renderer);
 		SDL_Rect renderQuad = { xpos,ypos,1760,960};
@@ -50,7 +50,7 @@ int Menu::loadMenu(SDL_Renderer* renderer, TTF_Font* font) {
 
 		while (SDL_PollEvent (& mevent))
 		{
-			
+
 			switch (mevent.type) {
 			case SDL_QUIT:
 				return 1;
@@ -60,7 +60,7 @@ int Menu::loadMenu(SDL_Renderer* renderer, TTF_Font* font) {
 				ym = mevent.motion.y;
 				for (int i = 0;i < 1;++i) {
 					if (CheckFocusWithRect(xm, ym, text_menu[i].GetRect())) {
-						
+
 						if (selected[i] == false)
 						{
 							selected[i] = true;

@@ -14,7 +14,8 @@ public:
 	void getNum(int _n);
 	void setclip();
 	void set_renderquad();
-	SDL_Rect get_rect();
+	int Get_MusPosx();
+	int Get_MusPosy();
 
 private:
 	float xval;

@@ -2,7 +2,7 @@
 
 GameMap::GameMap()
 {
-	
+
 }
 
 GameMap::~GameMap()
@@ -21,7 +21,7 @@ void GameMap::LoadMap(const char* name) {
 	for (int i = 0;i < MAP_MAP_Y;i++) {
 		for (int j = 0;j < MAP_MAP_X;j++) {
 			fscanf(fp, "%d", &gamemap.tile[i][j]);
-	
+
 			if (gamemap.tile[i][j] > 0) {
 				if (j > gamemap.maxx) {
 					gamemap.maxx = j;
@@ -48,7 +48,7 @@ void GameMap::LoadTiles(SDL_Renderer* screen) {
 
 	for (int i = 0;i < 20;i++) {
 		sprintf_s(file_img, "assets/block%d.png", i);
-		
+
 		fopen_s(&fp, file_img, "rb");
 		if (fp == NULL) {
 			continue;

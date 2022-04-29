@@ -3,10 +3,11 @@
 #include <iostream>
 #include "gamemap.h"
 #include "Player1.h"
+#include "Player2.h"
 #include "ImpTimer.h"
 #include "Text.h"
 #include "Menu.h"
-#include "Mushroom.h"
+#include "OtherObj.h"
 #include <iostream>
 using namespace std;
 
@@ -102,14 +103,21 @@ int main(int arcs, char* argv[]) {
 	player1.LoadImg("assets/player1.png", gscreen);
 	player1.setclip();
 
-	Player1 player2;
+	Player2 player2;
 	player2.LoadImg("assets/player2.png", gscreen);
 	player2.setclip();
 
-    Mushroom cutemus;
-    cutemus.LoadImg("assets/mushroom.png", gscreen);
-    cutemus.getNum(4);
-    cutemus.setclip();
+    OtherObj cutemus;
+	cutemus.getPos(1000,640);
+    cutemus.LoadImg("assets/mushroom.png", gscreen, 48);
+	cutemus.getNum(4);
+	cutemus.setclip();
+
+	OtherObj gate;
+	gate.getPos(480,550);
+	gate.LoadImg("assets/gate.png",gscreen, 32);
+	gate.getNum(14);
+	gate.setclip();
 
 
 	Text menu_text;
@@ -153,8 +161,11 @@ int main(int arcs, char* argv[]) {
 		player1.DoPlayer(map_data);
 		player1.show(gscreen);
 
-		cutemus.show(gscreen);
+		player2.DoPlayer(map_data);
+		player2.show(gscreen);
 
+		cutemus.show(gscreen);
+        gate.show(gscreen);
 		game_map.SetMap(map_data);
 		game_map.DrawMap(gscreen);
 

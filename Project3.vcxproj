@@ -79,8 +79,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\84942\source\repos\Project2\GameProject\SDL2_ttf-2.0.18\include;C:\Users\84942\source\repos\Project2\GameProject\SDL2_mixer-2.0.4\include;C:\Users\84942\source\repos\Project2\GameProject\SDL2_image-2.0.5\include;C:\Users\84942\source\repos\Project2\GameProject\SDL2-2.0.20\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\84942\source\repos\Project2\GameProject\SDL2_ttf-2.0.18\lib\x64;C:\Users\84942\source\repos\Project2\GameProject\SDL2_image-2.0.5\lib\x64;C:\Users\84942\source\repos\Project2\GameProject\SDL2_mixer-2.0.4\lib\x64;C:\Users\84942\source\repos\Project2\GameProject\SDL2-2.0.20\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\KKcopy\SDL2-2.0.20\include;D:\KKcopy\SDL2_ttf-2.0.18\include;D:\KKcopy\SDL2_image-2.0.5\include;D:\KKcopy\SDL2_mixer-2.0.4\include</IncludePath>
+    <LibraryPath>D:\KKcopy\SDL2-2.0.20\lib;D:\KKcopy\SDL2_mixer-2.0.4\lib\x64;D:\KKcopy\SDL2_image-2.0.5\lib;D:\KKcopy\SDL2_ttf-2.0.18\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -147,7 +147,7 @@
     <ClCompile Include="CommonFunction.cpp" />
     <ClCompile Include="gamemap.cpp" />
     <ClCompile Include="ImpTimer.cpp" />
-    <ClCompile Include="main .cpp" />
+    <ClCompile Include="main1.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player1.cpp" />
     <ClCompile Include="Text.cpp" />
