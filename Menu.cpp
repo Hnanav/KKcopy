@@ -6,7 +6,7 @@ Menu::Menu() {
 }
 Menu::~Menu() {
 	Free();
-}bool Menu::CheckFocusWithRect(const int& x, const int& y, const SDL_Rect& rect)
+}bool Menu::CheckFocusWithRect(const int& x, const int& y, const SDL_Rect& rect)// xem chuot co o trong khung button hay khong
 {
 	if (x >= rect.x && x <= rect.x + rect.w &&
 		y >= rect.y && y <= rect.y + rect.h)
@@ -16,44 +16,44 @@ Menu::~Menu() {
 	return false;
 }
 
-Text text_menu[2];
-bool selected[2] = { 0,0 };
+Text text_menu[100];
+bool selected[1]={0};
 
 void BuildItemMenu(const int& index, const string& text, const int& x, const int& y, const int& color, SDL_Renderer* renderer, TTF_Font* font) {
 	text_menu[index].SetColor(color);
 	text_menu[index].SetText(text);
 	text_menu[index].LoadFont(font, renderer);
 	text_menu[index].SetRect(x, y);
-}
+}    //menu color before click
 
 void ChangeColor(const int& index, const int& color, SDL_Renderer* renderer, TTF_Font* font) {
 	text_menu[index].SetColor(color);
 	text_menu[index].LoadFont(font, renderer);
+	//change color
 }
 
 int Menu::loadMenu(SDL_Renderer* renderer, TTF_Font* font) {
 
 
 
-	BuildItemMenu(0, "Play Game", 700, 600, Text::PINK, renderer, font);
+	BuildItemMenu(0, "- Click here to play game -", 597, 800, Text::BLACK, renderer, font);
 
 	int xm = 0;
 	int ym = 0;
 
-	SDL_Event mevent;
+	SDL_Event mevent;  // handle mouse event
 
 	while (true) {
-		LoadImg("assets/background1.png", renderer);
+		LoadImg("assets/menu.png", renderer);
 		SDL_Rect renderQuad = { xpos,ypos,1760,960};
 		SDL_RenderCopy(renderer, texture, NULL, &renderQuad);
-		text_menu[0].RenderText(renderer, 700,600);
-
+		text_menu[0].RenderText(renderer, 597,800);
 		while (SDL_PollEvent (& mevent))
 		{
 
 			switch (mevent.type) {
 			case SDL_QUIT:
-				return 1;
+				return 2;
 			case SDL_MOUSEMOTION:
 			{
 				xm = mevent.motion.x;
@@ -64,36 +64,34 @@ int Menu::loadMenu(SDL_Renderer* renderer, TTF_Font* font) {
 						if (selected[i] == false)
 						{
 							selected[i] = true;
-							ChangeColor(i, Text::BLACK, renderer, font);
+							ChangeColor(i, Text::PINK, renderer, font);
 						}
 					}
 					else {
 						if (selected[i] == true)
 						{
 							selected[i] = false;
-							ChangeColor(i, Text::PINK, renderer, font);
+							ChangeColor(i, Text::BLACK, renderer, font);
 						}
 					}
 				}
 			}
 			break;
+			//Explain
 			case SDL_MOUSEBUTTONDOWN:
 			{
 				xm = mevent.button.x;
 				ym = mevent.button.y;
 
-				for (int i = 0; i < 1; i++)
-				{
-					if (CheckFocusWithRect(xm, ym, text_menu[i].GetRect()))
+				if (CheckFocusWithRect(xm, ym, text_menu[0].GetRect()))
 					{
-						return i;
+						return 0;
 					}
-				}
 			}
 			case SDL_KEYDOWN:
 				if (mevent.key.keysym.sym == SDLK_ESCAPE)
 				{
-					return 1;
+					return QUIT;
 				}
 			default:
 				break;
@@ -101,5 +99,6 @@ int Menu::loadMenu(SDL_Renderer* renderer, TTF_Font* font) {
 		}
 		SDL_RenderPresent(renderer);
 	}
-		return 1;
+		return QUIT;
 }
+

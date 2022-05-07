@@ -159,13 +159,13 @@
 	"CommonFunction.h"
 	"BaseObj.h"
 
-1649036000 source:d:\project_test\kkcopy\baseobj.cpp
+1651314087 source:d:\project_test\kkcopy\baseobj.cpp
 	"BaseObj.h"
 
-1649036000 d:\project_test\kkcopy\baseobj.h
+1651314087 d:\project_test\kkcopy\baseobj.h
 	"CommonFunction.h"
 
-1649036000 d:\project_test\kkcopy\commonfunction.h
+1651314458 d:\project_test\kkcopy\commonfunction.h
 	<Windows.h>
 	<iostream>
 	<SDL.h>
@@ -173,70 +173,78 @@
 	<SDL_mixer.h>
 	<SDL_ttf.h>
 
-1649036000 source:d:\project_test\kkcopy\commonfunction.cpp
+1651314087 source:d:\project_test\kkcopy\commonfunction.cpp
 	"CommonFunction.h"
 
-1650643857 source:d:\project_test\kkcopy\gamemap.cpp
+1651314087 source:d:\project_test\kkcopy\gamemap.cpp
 	"gamemap.h"
 
-1649036000 d:\project_test\kkcopy\gamemap.h
+1651314087 d:\project_test\kkcopy\gamemap.h
 	"CommonFunction.h"
 	"BaseObj.h"
 
-1649036000 source:d:\project_test\kkcopy\imptimer.cpp
+1651314087 source:d:\project_test\kkcopy\imptimer.cpp
 	"ImpTimer.h"
 	"CommonFunction.h"
 
-1649263982 d:\project_test\kkcopy\imptimer.h
+1651314087 d:\project_test\kkcopy\imptimer.h
 
-1650895666 source:d:\project_test\kkcopy\main.cpp
+1651914235 source:d:\project_test\kkcopy\main.cpp
 	"CommonFunction.h"
 	"BaseObj.h"
 	<iostream>
 	"gamemap.h"
-	"Player1.h"
-	"Player2.h"
+	"Player.h"
 	"ImpTimer.h"
 	"Text.h"
 	"Menu.h"
 	"OtherObj.h"
 	<iostream>
 
-1650894493 d:\project_test\kkcopy\player1.h
-	"CommonFunction.h"
-	"BaseObj.h"
-	"OtherObj.h"
-
-1650894879 d:\project_test\kkcopy\otherobj.h
+1651314726 d:\project_test\kkcopy\player1.h
 	"CommonFunction.h"
 	"BaseObj.h"
 
-1650125783 d:\project_test\kkcopy\player2.h
+1651915842 d:\project_test\kkcopy\otherobj.h
+	"CommonFunction.h"
+	"BaseObj.h"
+	"Player.h"
+
+1651315091 d:\project_test\kkcopy\player2.h
 	"CommonFunction.h"
 	"BaseObj.h"
 
-1649036000 d:\project_test\kkcopy\text.h
+1651314087 d:\project_test\kkcopy\text.h
 	"CommonFunction.h"
 
-1650895390 d:\project_test\kkcopy\menu.h
+1651314458 d:\project_test\kkcopy\menu.h
 	"CommonFunction.h"
 	"BaseObj.h"
 
-1650895351 source:d:\project_test\kkcopy\menu.cpp
+1651566649 source:d:\project_test\kkcopy\menu.cpp
 	"Menu.h"
 	"Text.h"
 	<iostream>
 
-1650894879 source:d:\project_test\kkcopy\otherobj.cpp
+1651894742 source:d:\project_test\kkcopy\otherobj.cpp
 	"OtherObj.h"
 
-1650894267 source:d:\project_test\kkcopy\player1.cpp
+1651316312 source:d:\project_test\kkcopy\player1.cpp
 	"Player1.h"
 	"OtherObj.h"
 
-1650855702 source:d:\project_test\kkcopy\player2.cpp
+1651316698 source:d:\project_test\kkcopy\player2.cpp
 	"Player2.h"
+	"OtherObj.h"
 
-1649036000 source:d:\project_test\kkcopy\text.cpp
+1651564247 source:d:\project_test\kkcopy\text.cpp
 	"Text.h"
+
+1651913189 source:d:\project_test\kkcopy\player.cpp
+	"Player.h"
+	"OtherObj.h"
+
+1651915842 d:\project_test\kkcopy\player.h
+	"CommonFunction.h"
+	"BaseObj.h"
 

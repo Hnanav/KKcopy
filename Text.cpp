@@ -4,7 +4,7 @@ Text::Text() {
 	textcolor.r = 255;
 	textcolor.g = 255;
 	textcolor.b = 255;
-	texture = NULL; 
+	texture = NULL;
 }
 Text::~Text() {
 
@@ -16,7 +16,7 @@ bool Text::LoadFont(TTF_Font* font, SDL_Renderer* renderer) {
 		wtext = text_sur->w;
 		htext = text_sur->h;
 
-		SDL_FreeSurface(text_sur); 
+		SDL_FreeSurface(text_sur);
 	}
 	return texture != NULL;
 }
@@ -36,7 +36,7 @@ void Text::SetColor(Uint8 red, Uint8 green, Uint8 blue) {
 void Text::SetColor(int color) {
 	if (color == WHITE) {
 		SDL_Color c = { 255,255,255 };
-		textcolor = c;  
+		textcolor = c;
 	}
 	else if (color == BLACK) {
 		SDL_Color c = { 0,0,0 };
@@ -46,7 +46,6 @@ void Text::SetColor(int color) {
 		SDL_Color c = { 255,195,236 };
 		textcolor = c;
 	}
-
 }
 void Text::SetRect(const int& xp,const int& yp) {
 	rec.x = xp;

@@ -1,6 +1,7 @@
 #pragma once
 #include "CommonFunction.h"
 #include "BaseObj.h"
+#include "Player.h"
 
 
 class OtherObj : public BaseObj
@@ -31,3 +32,5 @@ private:
 	int frameSize;
 
 };
+
+

@@ -1,4 +1,3 @@
-
 #pragma once
 #include "CommonFunction.h"
 #include "BaseObj.h"
@@ -15,3 +14,4 @@ private:
 	int xpos=0;
 	int ypos=0;
 };
+

@@ -31,7 +31,7 @@ bool OtherObj::LoadImg(string path, SDL_Renderer* renderer, int frameSize) {
 	return check;
 }
 
-void OtherObj::getNum(int _n){
+void OtherObj::getNum(int _n){  //lay so chia khung hinh
 	n=_n;
 }
 

@@ -2,15 +2,17 @@
 #include "BaseObj.h"
 #include <iostream>
 #include "gamemap.h"
-#include "Player1.h"
-#include "Player2.h"
+#include "Player.h"
 #include "ImpTimer.h"
 #include "Text.h"
 #include "Menu.h"
 #include "OtherObj.h"
-#include <iostream>
-using namespace std;
 
+
+#include <iostream>
+
+
+using namespace std;
 BaseObj background;
 TTF_Font *mainfont;
 bool init() {
@@ -20,7 +22,7 @@ bool init() {
 		return false;
 	}
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
-	gwindow = SDL_CreateWindow("Kit&Kat", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,1760, 960, SDL_WINDOW_SHOWN);
+	gwindow = SDL_CreateWindow("Kit&Kat", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1760, 960, SDL_WINDOW_SHOWN);
 	if (gwindow == NULL) {
 		success = false;
 	}
@@ -38,7 +40,7 @@ bool init() {
 		if (TTF_Init() == -1) {
 			success = false;
 		}
-		mainfont = TTF_OpenFont("fonts/m6x11.ttf", 100);
+		mainfont = TTF_OpenFont("fonts/m6x11.ttf", 50);
 		if (mainfont == NULL) {
 			success = false;
 		}
@@ -96,19 +98,19 @@ int main(int arcs, char* argv[]) {
 		return -1;
 	}
 	GameMap game_map;
-	game_map.LoadMap("map1.dat.txt");
+	game_map.LoadMap("map1.txt");
 	game_map.LoadTiles(gscreen);
 
-	Player1 player1;
+	Player player1;
 	player1.LoadImg("assets/player1.png", gscreen);
 	player1.setclip();
 
-	Player2 player2;
+	Player player2;
 	player2.LoadImg("assets/player2.png", gscreen);
 	player2.setclip();
 
-    OtherObj cutemus;
-	cutemus.getPos(1000,640);
+	OtherObj cutemus;
+	cutemus.getPos(1400,640);
     cutemus.LoadImg("assets/mushroom.png", gscreen, 48);
 	cutemus.getNum(4);
 	cutemus.setclip();
@@ -119,6 +121,14 @@ int main(int arcs, char* argv[]) {
 	gate.getNum(14);
 	gate.setclip();
 
+	OtherObj box;
+	box.getPos(700,700);
+	box.LoadImg("assets/box.png",gscreen, 24);
+	box.getNum(1);
+	box.setclip();
+
+
+
 
 	Text menu_text;
 	menu_text.SetColor(Text::PINK);
@@ -127,12 +137,15 @@ int main(int arcs, char* argv[]) {
 
 	Menu menu;
 	bool quit = false;
-	if (menu.loadMenu(gscreen, mainfont) == 1)
+	bool isRunning = false;
+	if (menu.loadMenu(gscreen, mainfont) == 0) {
+		isRunning = true;
+		quit = false;
+	}
+	if (menu.loadMenu(gscreen, mainfont) == QUIT) {
 		quit = true;
-
-
-
-	while (!quit) {
+	}
+	while (!quit && isRunning) {
 
 		fps_timer.start();
 		while (SDL_PollEvent(&event) != 0) {
@@ -148,7 +161,8 @@ int main(int arcs, char* argv[]) {
 					break;
 				}
 			}
-			player1.handleEvent(event, gscreen,sound);
+			player1.handleEvent1(event, gscreen,sound);
+			player2.handleEvent2(event, gscreen, sound);
 		}
 		SDL_SetRenderDrawColor(gscreen, 255, 255, 255,255);
 		SDL_RenderClear(gscreen);
@@ -159,13 +173,17 @@ int main(int arcs, char* argv[]) {
 
 
 		player1.DoPlayer(map_data);
-		player1.show(gscreen);
+		player1.show1(gscreen);
 
 		player2.DoPlayer(map_data);
-		player2.show(gscreen);
+		player2.show2(gscreen);
 
 		cutemus.show(gscreen);
-        gate.show(gscreen);
+
+		gate.show(gscreen);
+
+		box.show(gscreen);
+
 		game_map.SetMap(map_data);
 		game_map.DrawMap(gscreen);
 
