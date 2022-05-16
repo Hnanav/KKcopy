@@ -3,6 +3,7 @@
 #define GAMEMAP_H_
 #include "CommonFunction.h"
 #include "BaseObj.h"
+#include "Save_game.h"
 class TileMap: public BaseObj
 {
 public:

@@ -1,6 +1,7 @@
 #pragma once
 #include "CommonFunction.h"
 #include "BaseObj.h"
+
 class Menu: public BaseObj
 {
 public:

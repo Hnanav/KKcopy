@@ -5,6 +5,9 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
+#include <fstream>
+#include <string>
+#include <sstream>
 
 
 static SDL_Window* gwindow = NULL;

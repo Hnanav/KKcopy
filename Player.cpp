@@ -3,10 +3,10 @@
 Player::Player()
 {
 	frame = 0;
-	xpos = 332;
-	ypos = 664;
 	xval = 0;
 	yval = 0;
+	xpos = 332;
+	ypos = 664;
 	widthframe = 0;
 	heightframe = 0;
 	status = -1;
@@ -21,6 +21,14 @@ Player::Player()
 Player::~Player() {
 	Free();
 }
+
+void Player:: setPos(float x, float y)
+{
+    xpos = x;
+    ypos = y;
+}
+
+
 bool Player::LoadImg(string path, SDL_Renderer* renderer) {
 	bool ktra = BaseObj::LoadImg(path, renderer);
 
@@ -278,7 +286,7 @@ void Player::handleEvent2(SDL_Event e, SDL_Renderer* renderer, Mix_Chunk* sound[
 		}
 	}
 }
-void Player::DoPlayer(Map& mapdata) {
+void Player::DoPlayer(Map& mapdata, int p) {
 	xval = 0;
 	yval += GRAVITY_SPEED;
 
@@ -302,15 +310,16 @@ void Player::DoPlayer(Map& mapdata) {
 
 	CheckToMap(mapdata);
 	CheckToMus();
-	CheckToGate();
+	CheckToGate(p);
 }
+
 void Player::CheckToMap(Map& mapdata) {
 	int x1 = 0;
 	int x2 = 0;
-
+    xPlayer = x1*TILE_SIZE;
 	int y1 = 0;
 	int y2 = 0;
-
+    yPlayer = y1*TILE_SIZE;
 
 	//check horizontal
 	int height_min = (heightframe * 3 < TILE_SIZE ? heightframe * 3 : TILE_SIZE);
@@ -477,7 +486,7 @@ void Player::UpdateImgPlayer2(SDL_Renderer* des) {
 
 void Player::CheckToMus() {
 	OtherObj mushroom;
-	mushroom.getPos(1400, 640);
+	mushroom.setPos(1400, 640);
 
 	int x1 = 0;
 	int x2 = 0;
@@ -564,10 +573,10 @@ void Player::CheckToMus() {
 
 	}
 }
-void Player::CheckToGate()
+void Player::CheckToGate(int p)
 {
     OtherObj gatelv1;
-    gatelv1.getPos(480,550);
+    gatelv1.setPos(480,550);
 
 	int x1 = 0;
 	int x2 = 0;
@@ -600,11 +609,10 @@ void Player::CheckToGate()
     //If none of the sides from A are outside B\
     true;
 				if (checkCollision) {
-					xpos = 0;
-					xval =0;
-					ypos =0;
-					yval =0;
+					nextLevelPlayer[p] = true;
+					cout << "nextlevel" << p + 1;
 				}
+				else nextLevelPlayer[p] = false;
 		}
 	//check vertical
 	int width_min = widthframe*3< TILE_SIZE ? widthframe*3 : TILE_SIZE;
@@ -630,12 +638,19 @@ void Player::CheckToGate()
                 else checkCollision=false;
         if(yval<0){
         if (checkCollision) {
-					xpos = 0;
-					xval =0;
-					ypos =0;
-					yval =0;
+				nextLevelPlayer[p] = true;
+				cout << "nextlevel"<<p+1;
 			}
 		}
 	}
 }
 
+float Player:: Get_PlayerPosx()
+{
+    return xPlayer;
+}
+
+float Player:: Get_PlayerPosy()
+{
+    return yPlayer;
+}

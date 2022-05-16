@@ -165,23 +165,27 @@
 1651314087 d:\project_test\kkcopy\baseobj.h
 	"CommonFunction.h"
 
-1651314458 d:\project_test\kkcopy\commonfunction.h
+1652588590 d:\project_test\kkcopy\commonfunction.h
 	<Windows.h>
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
 	<SDL_ttf.h>
+	<fstream>
+	<string>
+	<sstream>
 
 1651314087 source:d:\project_test\kkcopy\commonfunction.cpp
 	"CommonFunction.h"
 
-1651314087 source:d:\project_test\kkcopy\gamemap.cpp
+1652632345 source:d:\project_test\kkcopy\gamemap.cpp
 	"gamemap.h"
 
-1651314087 d:\project_test\kkcopy\gamemap.h
+1652673787 d:\project_test\kkcopy\gamemap.h
 	"CommonFunction.h"
 	"BaseObj.h"
+	"Save_game.h"
 
 1651314087 source:d:\project_test\kkcopy\imptimer.cpp
 	"ImpTimer.h"
@@ -189,7 +193,7 @@
 
 1651314087 d:\project_test\kkcopy\imptimer.h
 
-1651914235 source:d:\project_test\kkcopy\main.cpp
+1652708657 source:d:\project_test\kkcopy\main.cpp
 	"CommonFunction.h"
 	"BaseObj.h"
 	<iostream>
@@ -199,13 +203,15 @@
 	"Text.h"
 	"Menu.h"
 	"OtherObj.h"
+	"MapFiles.h"
 	<iostream>
+	<string>
 
 1651314726 d:\project_test\kkcopy\player1.h
 	"CommonFunction.h"
 	"BaseObj.h"
 
-1651915842 d:\project_test\kkcopy\otherobj.h
+1652663796 d:\project_test\kkcopy\otherobj.h
 	"CommonFunction.h"
 	"BaseObj.h"
 	"Player.h"
@@ -217,16 +223,16 @@
 1651314087 d:\project_test\kkcopy\text.h
 	"CommonFunction.h"
 
-1651314458 d:\project_test\kkcopy\menu.h
+1652673799 d:\project_test\kkcopy\menu.h
 	"CommonFunction.h"
 	"BaseObj.h"
 
-1651566649 source:d:\project_test\kkcopy\menu.cpp
+1652671531 source:d:\project_test\kkcopy\menu.cpp
 	"Menu.h"
 	"Text.h"
 	<iostream>
 
-1651894742 source:d:\project_test\kkcopy\otherobj.cpp
+1652663768 source:d:\project_test\kkcopy\otherobj.cpp
 	"OtherObj.h"
 
 1651316312 source:d:\project_test\kkcopy\player1.cpp
@@ -240,11 +246,29 @@
 1651564247 source:d:\project_test\kkcopy\text.cpp
 	"Text.h"
 
-1651913189 source:d:\project_test\kkcopy\player.cpp
+1652708657 source:d:\project_test\kkcopy\player.cpp
 	"Player.h"
 	"OtherObj.h"
 
-1651915842 d:\project_test\kkcopy\player.h
+1652674219 d:\project_test\kkcopy\player.h
 	"CommonFunction.h"
 	"BaseObj.h"
+
+1652676684 source:d:\project_test\kkcopy\save_game.cpp
+	"Save_game.h"
+	"Player.h"
+
+1652676770 d:\project_test\kkcopy\save_game.h
+	"CommonFunction.h"
+	"Player.h"
+	"OtherObj.h"
+
+1652630565 source:d:\project_test\kkcopy\mapfiles.cpp
+	"MapFiles.h"
+
+1652459799 source:d:\project_test\kkcopy\src\mapfiles.h.cpp
+
+1652630606 d:\project_test\kkcopy\mapfiles.h
+	<SDL.h>
+	<iostream>
 

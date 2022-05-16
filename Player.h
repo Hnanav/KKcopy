@@ -6,7 +6,7 @@
 #define MAX_FALL_SPEED 10
 #define PLAYER_SPEED 2
 #define BLANK_TILE 0
-#define JUMP_VAL 8
+#define JUMP_VAL 9
 #define PINK_FISH 5
 #define POISON 4
 
@@ -25,6 +25,7 @@ public:
 		JUMP=4,
 	};
 
+	void setPos(float x, float y);
 	bool LoadImg(string path, SDL_Renderer* renderer);
 	void show1(SDL_Renderer* des);
 	void show2(SDL_Renderer* des);
@@ -32,21 +33,32 @@ public:
 	void handleEvent2(SDL_Event e, SDL_Renderer* renderer, Mix_Chunk* sound[5]);
 	void setclip();
 
-	void DoPlayer(Map& mapdata);
+	void DoPlayer(Map& mapdata,int p);
 
 	void CheckToMap(Map& mapdata);
 
 	void CheckToMus();
 
-	void CheckToGate();
+	void CheckToGate(int p);
 
 	void UpdateImgPlayer1(SDL_Renderer* des);
 	void UpdateImgPlayer2(SDL_Renderer* des);
 
 	void IncreasePowerPlayer1();
 
+	void nextLevel(bool check) {
+		check = true;
+	}
 
+	bool checkNextLevelP1() {
+		return nextLevelPlayer[0];
+	}
+	bool checkNextLevelP2() {
+		return nextLevelPlayer[1];
+	}
 
+    float Get_PlayerPosx();
+	float Get_PlayerPosy();
 private:
 
 	int pinkfishcount;
@@ -60,6 +72,11 @@ private:
 	int widthframe;
 	int heightframe;
 
+    int xPlayer = 0;
+    int yPlayer = 0;
+
+	bool nextLevelPlayer[2]={0,0};
+
 	SDL_Rect FRAME_CLIP[7];
 
 
@@ -69,5 +86,3 @@ private:
 	bool onground=false;
 
 };
-
-

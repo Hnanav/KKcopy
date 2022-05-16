@@ -15,9 +15,9 @@ public:
 	void getFrame(int _f);
 	void setclip();
 	void set_renderquad();
-	void getPos(float x, float y);
-	int Get_ObjPosx();
-	int Get_ObjPosy();
+	void setPos(float x, float y);
+	float Get_ObjPosx();
+	float Get_ObjPosy();
 
 private:
 	float xval;
@@ -32,5 +32,6 @@ private:
 	int frameSize;
 
 };
+
 
 

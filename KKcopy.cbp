@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,21 +40,23 @@
 		<Unit filename="CommonFunction.h" />
 		<Unit filename="ImpTimer.cpp" />
 		<Unit filename="ImpTimer.h" />
+		<Unit filename="Mapfiles.cpp" />
+		<Unit filename="Mapfiles.h" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.h" />
 		<Unit filename="OtherObj.cpp" />
 		<Unit filename="OtherObj.h" />
 		<Unit filename="Player.cpp" />
 		<Unit filename="Player.h" />
-		<Unit filename="Player1.cpp" />
-		<Unit filename="Player1.h" />
-		<Unit filename="Player2.cpp" />
-		<Unit filename="Player2.h" />
+		<Unit filename="Save_game.cpp" />
+		<Unit filename="Save_game.h" />
 		<Unit filename="Text.cpp" />
 		<Unit filename="Text.h" />
 		<Unit filename="gamemap.cpp" />
 		<Unit filename="gamemap.h" />
+		<Unit filename="include/Mapfiles.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Mapfiles.h.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

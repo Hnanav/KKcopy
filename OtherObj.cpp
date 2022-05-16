@@ -11,7 +11,7 @@ OtherObj::~OtherObj() {
 	Free();
 }
 
-void OtherObj:: getPos(float x, float y)
+void OtherObj:: setPos(float x, float y)
 {
     xpos = x;
     ypos = y;
@@ -35,6 +35,7 @@ void OtherObj::getNum(int _n){  //lay so chia khung hinh
 	n=_n;
 }
 
+
 void OtherObj::setclip() {
 	if (widthframe > 0 && heightframe > 0) {
 		for(int i=0;i<n;i++){
@@ -46,12 +47,12 @@ void OtherObj::setclip() {
 	}
 }
 
-int OtherObj::Get_ObjPosx()
+float OtherObj::Get_ObjPosx()
 {
  return xpos;
 }
 
-int OtherObj::Get_ObjPosy()
+float OtherObj::Get_ObjPosy()
 {
     return ypos;
 }
